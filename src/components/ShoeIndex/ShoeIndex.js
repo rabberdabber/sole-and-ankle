@@ -12,21 +12,6 @@ import ShoeGrid from '../ShoeGrid';
 const ShoeIndex = ({ sortId, setSortId }) => {
   return (
     <Wrapper>
-      <MainColumn>
-        <Header>
-          <Title>Running</Title>
-          <Select
-            label="Sort"
-            value={sortId}
-            onChange={(ev) => setSortId(ev.target.value)}
-          >
-            <option value="newest">Newest Releases</option>
-            <option value="price">Price</option>
-          </Select>
-        </Header>
-        <Spacer size={34} />
-        <ShoeGrid />
-      </MainColumn>
       <LeftColumn>
         <Breadcrumbs>
           <Breadcrumbs.Crumb href="/">Home</Breadcrumbs.Crumb>
@@ -38,17 +23,51 @@ const ShoeIndex = ({ sortId, setSortId }) => {
         <Spacer size={42} />
         <ShoeSidebar />
       </LeftColumn>
+      <MainColumn>
+        <Header>
+          <Title>Running</Title>
+          <Select
+            label="Sort"
+            value={sortId}
+            onChange={(ev) => setSortId(ev.target.value)}
+            >
+            <option value="newest">Newest Releases</option>
+            <option value="price">Price</option>
+          </Select>
+        </Header>
+        <Spacer size={34} />
+        <ContentWrapper>
+          <ShoeGrid />
+        </ContentWrapper>
+      </MainColumn>
     </Wrapper>
   );
 };
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  display: flex;
+  border: 1px solid black;
+`;
 
 const LeftColumn = styled.div``;
 
-const MainColumn = styled.div``;
+const MainColumn = styled.div`
+  flex-grow: 1;
+  display: flex;
+  justify-content: column;
+  width: 100%;
+  position: relative;
+  overflow: auto;
+`;
 
-const Header = styled.header``;
+const ContentWrapper = styled.div`
+  position: absolute;
+  border: 1px solid black;
+`;
+const Header = styled.header`
+  display: flex;
+  width: 100%;
+`;
 
 const Title = styled.h2`
   font-size: 1.5rem;

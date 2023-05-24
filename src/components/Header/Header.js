@@ -12,7 +12,9 @@ const Header = () => {
     <header>
       <SuperHeader />
       <MainHeader>
-        <Logo />
+        <LogoWrapper>
+          <Logo />
+        </LogoWrapper>
         <Nav>
           <NavLink href="/sale">Sale</NavLink>
           <NavLink href="/new">New&nbsp;Releases</NavLink>
@@ -27,11 +29,24 @@ const Header = () => {
 };
 
 const MainHeader = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   padding: 0 32px;
   border-bottom: 1px solid ${COLORS.gray[300]};
 `;
 
-const Nav = styled.nav``;
+const LogoWrapper = styled.div`
+  margin-right: auto;
+`
+
+const Nav = styled.nav`
+  display: flex;
+  margin-right: auto;
+  justify-content: center;
+  gap: 20px;
+`;
 
 const NavLink = styled.a`
   font-size: 1.125rem;
